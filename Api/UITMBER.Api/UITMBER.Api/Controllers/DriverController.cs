@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UITMBER.Api.Configuration;
+using UITMBER.Api.DataModels;
 using UITMBER.Api.Repositories.Drivers;
 using UITMBER.Api.Repositories.Drivers.Dto;
 
@@ -32,7 +33,15 @@ namespace UITMBER.Api.Controllers
             var userId = Convert.ToInt32(User.FindFirst("UserId")?.Value);
 
 
-            return _driverRepository.GetNearbyDrivers(latitude, longitude);
+            return _driverRepository.GetNearbyDrivers(latitude, longitude, userId);
+        }
+
+        [HttpGet]
+
+        public Task<User> GetProfile()
+        {
+            var userId = Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            return  _driverRepository.GetProfile(userId);
         }
     }
 }

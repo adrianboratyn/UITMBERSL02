@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UITMBER.Api.DataModels;
 using UITMBER.Api.Repositories.Drivers.Dto;
 
 namespace UITMBER.Api.Repositories.Drivers
 {
     public interface IDriverRepository
     {
-        Task<List<DriverDto>> GetNearbyDrivers(double latitude, double longitude);
+        Task<List<DriverDto>> GetNearbyDrivers(double latitude, double longitude, long userId);
+        Task<User> GetProfile(long id);
     }
 }
